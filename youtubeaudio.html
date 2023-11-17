@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/youtube.css">
+    <style>
+    body {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        background: radial-gradient(circle, #9089C1, #B98EAD); /* Radial gradient background */
+        font-family: 'Helvetica', sans-serif; /* Change font style */
+    }
+
+    .navbar {
+        background-color: #333; /* Set your desired background color */
+        padding: 15px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2); /* Add a subtle box shadow */
+    }
+
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #333; /* Set your desired background color */
+    }
+
+    ul li {
+        margin: 15px;
+    }
+
+    ul li a {
+        text-decoration: underline;
+        color: white; /* Set your desired text color */
+    }
+
+    .main {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-top: 45px; /* Adjust margin as needed */
+        animation: fadeInUp 1s ease-out; /* Add animation */
+    }
+
+    input {
+        margin: 15px;
+        width: 80%; /* Set the width to 80% of the parent container */
+        padding: 15px; /* Increase padding for better appearance */
+        font-size: 16px; /* Increase font size */
+    }
+
+    #button {
+        background-color: #4CAF50; /* Green */
+        color: white;
+        padding: 15px 30px; /* Increase padding */
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        font-size: 18px; /* Increase font size */
+        animation: scaleIn 0.5s ease-in-out; /* Add animation */
+    }
+
+    #button:hover {
+        background-color: #008000;
+    }
+
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes scaleIn {
+        from {
+            transform: scale(0.8);
+        }
+        to {
+            transform: scale(1);
+        }
+    }
+    </style>
+
+    <title>YouTube Downloader</title>
+</head>
+<body>
+    <form action="/audioDownload" method="post">
+        <h2>Audio Downloader</h2>
+        <h3>Convert and download MP3 from YouTube videos</h3>
+        <div class="navbar"></div>
+        <ul>
+            <li><a href="http://127.0.0.1:5000/" class="active">YouTube to MP4</a></li>
+            <li><a href="http://127.0.0.1:5000/audio">YouTube to MP3</a></li>
+        </ul>
+        <div class="main">
+            <input type="text" name="link" placeholder="Paste your link here...." /><br>
+            <input id="button" type="submit" value="Download!">
+
+            {% if durl %}
+                <a href="{{ durl }}" target="_blank">Download Audio File</a>
+            {% endif %}
+        </div>
+    </form>
+</body>
+</html>
